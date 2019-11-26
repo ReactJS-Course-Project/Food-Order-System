@@ -1,0 +1,29 @@
+.group {
+  position: relative;
+  font-family: 'Quicksand', sans-serif;
+  margin: 1.2rem;
+  min-height: 3rem;
+}
+
+.btn-form {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: crimson;
+  text-decoration: none;
+  color: cornsilk;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease-out;
+  cursor: pointer !important;
+}
+
+.btn-form:hover {
+  transform: translate(-50%, -2px);
+  box-shadow: 2px 2px 7px #ccc;
+}
+
+.btn-form:active {
+  box-shadow: none;
+  transform: translate(-50%, 0);
+}
