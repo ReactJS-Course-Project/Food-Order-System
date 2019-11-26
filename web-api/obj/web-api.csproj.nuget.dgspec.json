@@ -1,25 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "/Users/chetha/Documents/Document/IT-STEP-Course-Project/Food-Order-System/web-api/web-api.csproj": {}
+    "D:\\Website\\Food-Order-System\\web-api\\web-api.csproj": {}
   },
   "projects": {
-    "/Users/chetha/Documents/Document/IT-STEP-Course-Project/Food-Order-System/web-api/web-api.csproj": {
+    "D:\\Website\\Food-Order-System\\web-api\\web-api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/chetha/Documents/Document/IT-STEP-Course-Project/Food-Order-System/web-api/web-api.csproj",
+        "projectUniqueName": "D:\\Website\\Food-Order-System\\web-api\\web-api.csproj",
         "projectName": "web-api",
-        "projectPath": "/Users/chetha/Documents/Document/IT-STEP-Course-Project/Food-Order-System/web-api/web-api.csproj",
-        "packagesPath": "/Users/chetha/.nuget/packages/",
-        "outputPath": "/Users/chetha/Documents/Document/IT-STEP-Course-Project/Food-Order-System/web-api/obj/",
+        "projectPath": "D:\\Website\\Food-Order-System\\web-api\\web-api.csproj",
+        "packagesPath": "C:\\Users\\Kimly\\.nuget\\packages\\",
+        "outputPath": "D:\\Website\\Food-Order-System\\web-api\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/Users/chetha/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Kimly\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -35,6 +40,22 @@
       },
       "frameworks": {
         "netcoreapp3.0": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -53,7 +74,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
