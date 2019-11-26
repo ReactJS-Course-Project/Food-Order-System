@@ -5,7 +5,7 @@
   min-height: 3rem;
 }
 
-.btn-form {
+.btnForm {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -15,15 +15,16 @@
   padding: 1rem;
   border-radius: 0.5rem;
   transition: all 0.2s ease-out;
-  cursor: pointer !important;
+  cursor: pointer;
+  user-select: none;
 }
 
-.btn-form:hover {
+.btnForm:hover {
   transform: translate(-50%, -2px);
   box-shadow: 2px 2px 7px #ccc;
 }
 
-.btn-form:active {
+.btnForm:active {
   box-shadow: none;
   transform: translate(-50%, 0);
 }

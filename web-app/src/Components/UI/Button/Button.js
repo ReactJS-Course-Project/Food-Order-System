@@ -1,10 +1,12 @@
 import React from 'react';
-import './Button.css';
+import classStyle from './Button.css';
 
 const button = props => {
   return (
-    <div className="group">
-      <div className="btn-form">{props.title}</div>
+    <div className={classStyle.group}>
+      <div className={classStyle.btnForm} onClick={props.clicked}>
+        {props.title}
+      </div>
     </div>
   );
 };

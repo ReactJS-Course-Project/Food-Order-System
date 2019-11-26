@@ -1,18 +1,21 @@
 import React from 'react';
-import './InputType.css';
+import classStyle from './InputType.css';
 
-const inputType = prop => {
+const inputType = props => {
   return (
-    <div className='form-group'>
+    <div className={classStyle.formGroup}>
       <input
-        type={prop.type}
-        id={prop.inputId}
-        className='input-form'
+        type={props.type}
+        id={props.inputId}
+        className={classStyle.inputForm}
         required
-        autoComplete='off'
+        autoComplete="off"
+        name={props.name}
+        value={props.value}
+        onChange={event => props.changed(event)}
       />
-      <label htmlFor={prop.inputId} className='label-form'>
-        <span className='label-name'>{prop.title}</span>
+      <label htmlFor={props.inputId} className={classStyle.labelForm}>
+        <span className={classStyle.labelName}>{props.title}</span>
       </label>
     </div>
   );

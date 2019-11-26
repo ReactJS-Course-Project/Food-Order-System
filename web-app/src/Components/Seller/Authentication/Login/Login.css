@@ -1,20 +1,24 @@
-@import url("https://fonts.googleapis.com/css?family=Quicksand|Yeon+Sung&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Quicksand|Yeon+Sung&display=swap');
 
 .login {
-    padding: 1rem;
-    width: 100%;
-    border: 1px solid black;
-    border-radius: 10px;
-    box-shadow: 5px 6px 7px #ccc;
-    overflow: hidden;
+  padding: 1rem;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 5px 6px 7px #ccc;
+  overflow: hidden;
 }
 
-.Heading {
-    font-family: 'Yeon Sung', cursive;
-    margin: 1.2rem;
+.login .Heading {
+  font-family: 'Yeon Sung', cursive;
+  margin: 1.2rem;
 }
 
-.link-form {
-    text-decoration: none;
-    color: #888282;
+.login .linkform {
+  text-align: center;
+}
+
+.linkform a {
+  text-decoration: none;
+  color: #888282;
 }
