@@ -1,11 +1,24 @@
 import React from 'react';
 import Toolbar from './Toolbar/Toolbar';
+import classStyle from './Layout.css';
+import axios from 'axios';
 
-const layout = props => (
-  <div>
-    <Toolbar />
-    <main>Content</main>
-  </div>
-);
+class Layout extends React.Component {
+  componentDidMount() {
+    axios.get('/GetAll').then(response => {
+      console.log(response);
+    });
+  }
 
-export default layout;
+  render() {
+    return (
+      <div className={classStyle.Layout}>
+        <Toolbar />
+        <div></div>
+        <main>Content</main>
+      </div>
+    );
+  }
+}
+
+export default Layout;

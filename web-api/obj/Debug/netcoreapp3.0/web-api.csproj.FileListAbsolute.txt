@@ -68,3 +68,11 @@ D:\Website\Food-Order-System\web-api\bin\Debug\netcoreapp3.0\Microsoft.Extension
 D:\Website\Food-Order-System\web-api\bin\Debug\netcoreapp3.0\Microsoft.Extensions.Logging.Abstractions.dll
 D:\Website\Food-Order-System\web-api\bin\Debug\netcoreapp3.0\Microsoft.Extensions.Options.dll
 D:\Website\Food-Order-System\web-api\bin\Debug\netcoreapp3.0\Microsoft.Extensions.Primitives.dll
+D:\Website\Food-Order-System\web-api\bin\Debug\netcoreapp3.0\package-lock.json
+D:\Website\Food-Order-System\web-api\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Website\Food-Order-System\web-api\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Website\Food-Order-System\web-api\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Logging.dll
+D:\Website\Food-Order-System\web-api\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Protocols.dll
+D:\Website\Food-Order-System\web-api\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Website\Food-Order-System\web-api\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Tokens.dll
+D:\Website\Food-Order-System\web-api\bin\Debug\netcoreapp3.0\System.IdentityModel.Tokens.Jwt.dll

@@ -1,14 +1,14 @@
-namespace web_api.Models
+namespace web_api.Dto
 {
-    public class User
+    public class RegisterModel
     {
         public int Id { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string userName { get; set; }
-        public byte[] passwordHash { get; set; }
-        public byte[] passwordSalt { get; set; }
+        public string password { get; set; }
         public string sex { get; set; }
         public int age { get; set; }
+        public int adminId { get; set; }
     }
 }
