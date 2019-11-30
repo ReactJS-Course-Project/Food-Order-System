@@ -1,0 +1,10 @@
+.ToolbarItem {
+  color: whitesmoke;
+  cursor: pointer;
+  height: 100%;
+  user-select: none;
+}
+
+.ToolbarItem:hover {
+  color: crimson;
+}
