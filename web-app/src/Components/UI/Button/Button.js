@@ -4,7 +4,11 @@ import classStyle from './Button.css';
 const button = props => {
   return (
     <div className={classStyle.group}>
-      <div className={classStyle.btnForm} onClick={props.clicked}>
+      <div
+        className={classStyle.btnForm}
+        onClick={props.clicked}
+        onKeyPress={props.press}
+      >
         {props.title}
       </div>
     </div>

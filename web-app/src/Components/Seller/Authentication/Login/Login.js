@@ -9,11 +9,14 @@ class Login extends Component {
     username: '',
     password: '',
     token: '',
-    error: null
+    error: null,
+    sellerId: -1
   };
 
   componentDidMount() {
     console.log('componentDidMount');
+
+    this.onPressHandler = this.onPressHandler.bind(this);
   }
 
   componentDidUpdate() {
@@ -27,9 +30,13 @@ class Login extends Component {
         Password: this.state.password
       })
       .then(response => {
-        console.log(response.data.tokenString);
-        this.setState({ token: response.data.tokenString });
-        axios.defaults.headers.common['Authorization'] = this.state.token;
+        console.log(response);
+        this.setState({
+          token: response.data.tokenString,
+          sellerId: response.data.id
+        });
+        localStorage.setItem('Token', this.state.token);
+        localStorage.setItem('sCurId', this.state.sellerId);
         window.location = '/Layout';
       })
       .catch(error => {
@@ -38,13 +45,20 @@ class Login extends Component {
       });
   };
 
+  onPressHandler = event => {
+    if (event.keyCode === 13) this.clickedHandler();
+  };
+
   changedHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
   render() {
     return (
-      <div className={classStyle.login}>
+      <div
+        className={classStyle.login}
+        onKeyPress={event => this.onPressHandler(event)}
+      >
         <h1 className={classStyle.Heading}>Login Form</h1>
         <Textinput
           title='Username'

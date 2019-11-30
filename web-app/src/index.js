@@ -1,13 +1,33 @@
 import React from 'react';
+import axios from 'axios';
 import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import Authentication from './Components/Seller/Authentication/Authentication';
 import Layout from './Components/Seller/Layout/Layout';
-import axios from 'axios';
 
 axios.defaults.baseURL = 'http://localhost:4000/Sellers';
+
+axios.interceptors.request.use(
+  request => {
+    console.log(request);
+    return request;
+  },
+  error => {
+    return Promise.reject(error);
+  }
+);
+
+axios.interceptors.response.use(
+  response => {
+    console.log(response);
+    return response;
+  },
+  error => {
+    return Promise.reject(error);
+  }
+);
 
 const routing = (
   <Router>

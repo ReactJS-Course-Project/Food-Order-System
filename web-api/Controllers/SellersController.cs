@@ -4,6 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
@@ -55,11 +56,12 @@ namespace web_api.Controllers
             var tokenString = tokenHandler.WriteToken(token);
 
             // return basic user info (without password) and token to store client side
-            return Ok(new { tokenString });
+            return Ok(new { seller.Id, tokenString });
         }
 
         [AllowAnonymous]
-        [HttpPost("register")]
+        [HttpPost]
+        [Route("register")]
         public IActionResult Register([FromBody]RegisterModel sellerDto)
         {
             sellerDto.userName = sellerDto.userName.ToLower();
