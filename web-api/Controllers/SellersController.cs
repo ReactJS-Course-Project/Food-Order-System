@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using web_api.Dto;
 using web_api.Helpers;
 using web_api.Models;
@@ -99,12 +100,30 @@ namespace web_api.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
+            var seller = _sellerService.GetById(id);
+            return Ok(new
+            {
+                seller.Id,
+                seller.firstName,
+                seller.lastName,
+                seller.userName,
+                seller.sex,
+                seller.age
+            });
+        }
+
+        [HttpPut("changeInfo/{id}")]
+        public IActionResult Update(int id, [FromBody]UpdateInfo sellerDto)
+        {
+            _sellerService.Update(id, sellerDto.firstName, sellerDto.lastName, sellerDto.userName,
+            sellerDto.sex, sellerDto.age, sellerDto.password);
             return Ok();
         }
 
-        [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody]RegisterModel sellerDto)
+        [HttpPut("changePassword/{id}")]
+        public IActionResult UpdatePassword(int id, [FromBody]UpdatePasswordModel SellerDto)
         {
+            _sellerService.UpdatePassword(id, SellerDto.oldPassword, SellerDto.newPassword);
             return Ok();
         }
 
@@ -113,6 +132,13 @@ namespace web_api.Controllers
         {
             _sellerService.Delete(id);
             return Ok();
+        }
+
+        [HttpGet("AdminInfo/{SellerId}")]
+        public IActionResult GetAdminInfo(int SellerId)
+        {
+            var adminUsername = _sellerService.GetAdminUsername(SellerId);
+            return Ok(adminUsername);
         }
     }
 }

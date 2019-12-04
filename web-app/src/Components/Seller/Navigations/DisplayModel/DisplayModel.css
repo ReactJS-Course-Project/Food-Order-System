@@ -1,0 +1,7 @@
+.Model {
+  position: absolute;
+  min-width: 300px;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+}

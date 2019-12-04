@@ -1,22 +1,23 @@
 import React from 'react';
 import classStyle from './InputType.css';
+import TextField from '@material-ui/core/TextField';
 
 const inputType = props => {
   return (
     <div className={classStyle.formGroup}>
-      <input
+      <TextField
+        error={props.error}
+        id={'standard-basic' + props.name}
+        label={props.title}
         type={props.type}
-        id={props.inputId}
         className={classStyle.inputForm}
         required
-        autoComplete="off"
+        readOnly={props.readOnly}
+        disabled={props.disabled}
         name={props.name}
         value={props.value}
         onChange={event => props.changed(event)}
       />
-      <label htmlFor={props.inputId} className={classStyle.labelForm}>
-        <span className={classStyle.labelName}>{props.title}</span>
-      </label>
     </div>
   );
 };

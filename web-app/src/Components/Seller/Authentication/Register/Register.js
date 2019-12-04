@@ -2,7 +2,8 @@ import React from 'react';
 import classStyle from './Register.css';
 import Textinput from '../../../UI/InputType/InputType';
 import Button from '../../../UI/Button/Button';
-import axios from 'axios';
+import axios from '../../../Axios/axiosSellerApi';
+import Select from '../../../UI/Select/Select';
 
 class Register extends React.Component {
   state = {
@@ -77,12 +78,15 @@ class Register extends React.Component {
           value={this.state.username}
           changed={event => this.changedHandler(event)}
         />
-        <Textinput
+
+        <Select
           title='Sex'
-          inputId='sex'
-          type='text'
-          name='sex'
+          data={[
+            { id: 'm', item: 'Male' },
+            { id: 'f', item: 'Female' }
+          ]}
           value={this.state.sex}
+          name='sex'
           changed={event => this.changedHandler(event)}
         />
         <Textinput

@@ -2,21 +2,20 @@ import React, { Component } from 'react';
 import classStyle from './Login.css';
 import Textinput from '../../../UI/InputType/InputType';
 import Button from '../../../UI/Button/Button';
-import axios from 'axios';
+import axios from '../../../Axios/axiosSellerApi';
 
 class Login extends Component {
   state = {
     username: '',
     password: '',
     token: '',
-    error: null,
+    error: false,
     sellerId: -1
   };
 
   componentDidMount() {
     console.log('componentDidMount');
-
-    this.onPressHandler = this.onPressHandler.bind(this);
+    document.addEventListener('keypress', this.onPressHandler);
   }
 
   componentDidUpdate() {
@@ -41,12 +40,12 @@ class Login extends Component {
       })
       .catch(error => {
         console.log(error);
-        this.setState({ error: error });
+        this.setState({ error: true });
       });
   };
 
   onPressHandler = event => {
-    if (event.keyCode === 13) this.clickedHandler();
+    if (event.key === 'Enter') this.clickedHandler();
   };
 
   changedHandler = event => {
@@ -55,10 +54,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div
-        className={classStyle.login}
-        onKeyPress={event => this.onPressHandler(event)}
-      >
+      <div className={classStyle.login}>
         <h1 className={classStyle.Heading}>Login Form</h1>
         <Textinput
           title='Username'
@@ -69,6 +65,7 @@ class Login extends Component {
           changed={this.changedHandler}
         />
         <Textinput
+          error={this.state.error}
           title='Password'
           inputId='password'
           type='password'
