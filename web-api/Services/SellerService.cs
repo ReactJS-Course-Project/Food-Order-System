@@ -160,6 +160,10 @@ namespace web_api.Services
         public void UpdatePassword(int id, string oldPassword, string newPassword)
         {
             var seller = _context.sellers.Find(id);
+
+            if (seller == null)
+                throw new AppException("User not found");
+
             if (string.IsNullOrWhiteSpace(oldPassword))
                 throw new AppException("Password is incorrect");
             // check if password is correct

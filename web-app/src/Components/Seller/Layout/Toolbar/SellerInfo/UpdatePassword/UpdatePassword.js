@@ -3,11 +3,13 @@ import classStyle from './Update.css';
 import Textinput from '../../../../../UI/InputType/InputType';
 import Button from '../../../../../UI/Button/Button';
 import axios from '../../../../../Axios/axiosSellerApi';
+import ErrorMsg from '../../../../../UI/Message/ErrorMessage/ErrorMessage';
 
 class Register extends React.Component {
   state = {
     oldPassword: '',
-    newPassword: ''
+    newPassword: '',
+    error: false
   };
 
   componentDidMount() {
@@ -33,33 +35,45 @@ class Register extends React.Component {
         window.location = '/Layout';
       })
       .catch(error => {
-        console.log(error);
+        this.setState({ message: error.response.data.message });
+        if (this.state.message === '')
+          this.setState({ message: 'Password is required!' });
+        this.setState({ error: true });
       });
   };
 
   onKeypressHandler = event => {
     if (event.keyCode === 13) this.submitHandler();
   };
-
+  setCloseError = () => {
+    this.setState({ error: false });
+  };
   render() {
     return (
-      <div className={classStyle.Update}>
-        <h1 className={classStyle.Heading}>Update Password</h1>
-        <Textinput
-          title='Old Password'
-          type='password'
-          name='oldPassword'
-          value={this.state.oldPassword}
-          changed={event => this.changedHandler(event)}
+      <div>
+        <div className={classStyle.Update}>
+          <h1 className={classStyle.Heading}>Update Password</h1>
+          <Textinput
+            title='Old Password'
+            type='password'
+            name='oldPassword'
+            value={this.state.oldPassword}
+            changed={event => this.changedHandler(event)}
+          />
+          <Textinput
+            title='New Password'
+            type='password'
+            name='newPassword'
+            value={this.state.newPassword}
+            changed={event => this.changedHandler(event)}
+          />
+          <Button title='Update' clicked={this.submitHandler} />
+        </div>
+        <ErrorMsg
+          error={this.state.error}
+          onClose={this.setCloseError}
+          message={this.state.message}
         />
-        <Textinput
-          title='New Password'
-          type='password'
-          name='newPassword'
-          value={this.state.newPassword}
-          changed={event => this.changedHandler(event)}
-        />
-        <Button title='Update' clicked={this.submitHandler} />
       </div>
     );
   }

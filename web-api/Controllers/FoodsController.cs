@@ -100,5 +100,12 @@ namespace web_api.Controllers
             _foodService.deleteFood(id);
             return Ok();
         }
+
+        [HttpPut("Update/{id}")]
+        public IActionResult Update(int id, [FromBody] UpdateFood foodParam)
+        {
+            _foodService.updateFood(id, foodParam.name, foodParam.CategoryId, foodParam.price);
+            return Ok();
+        }
     }
 }

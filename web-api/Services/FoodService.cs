@@ -59,9 +59,20 @@ namespace web_api.Services
                     .Single(f => f.Id == id);
         }
 
-        public void updateFood(Food food)
+        public void updateFood(int id, string name, int CategoryId, double price)
         {
-            throw new System.NotImplementedException();
+            var f = _context.foods.Find(id);
+            if (f == null) throw new AppException("Food not found");
+            if (_context.foods.Any(x => x.name == name)) throw new AppException($"Food's name {name} is already existed");
+
+            Category existingCategory = _context.categories.SingleOrDefault(c => c.Id == CategoryId);
+
+            f.name = name;
+            f.price = price;
+            f.category = existingCategory;
+
+            _context.foods.Update(f);
+            _context.SaveChanges();
         }
 
         public IEnumerable<Food> GetOwnFoods(int SellerId)

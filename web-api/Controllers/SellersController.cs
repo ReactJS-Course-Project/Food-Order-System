@@ -130,8 +130,15 @@ namespace web_api.Controllers
         [HttpPut("changePassword/{id}")]
         public IActionResult UpdatePassword(int id, [FromBody]UpdatePasswordModel SellerDto)
         {
-            _sellerService.UpdatePassword(id, SellerDto.oldPassword, SellerDto.newPassword);
-            return Ok();
+            try
+            {
+                _sellerService.UpdatePassword(id, SellerDto.oldPassword, SellerDto.newPassword);
+                return Ok();
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
         [HttpDelete("{id}")]

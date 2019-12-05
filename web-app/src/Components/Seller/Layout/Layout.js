@@ -15,6 +15,7 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import Button from '@material-ui/core/Button';
 import axiosSeller from '../../Axios/axiosSellerApi';
 import axiosFood from '../../Axios/axiosFoodApi';
+import axiosCategory from '../../Axios/axiosCategoryApi';
 import DialogUI from '../../UI/DialogUI/DialogUI';
 
 const useStyles = makeStyles(theme => ({
@@ -96,6 +97,21 @@ export default function PrimarySearchAppBar(props) {
     }
   );
   axiosFood.interceptors.request.use(
+    config => {
+      let token = localStorage.getItem('Token');
+
+      if (token) {
+        config.headers['Authorization'] = `Bearer ${token}`;
+      }
+
+      return config;
+    },
+
+    error => {
+      return Promise.reject(error);
+    }
+  );
+  axiosCategory.interceptors.request.use(
     config => {
       let token = localStorage.getItem('Token');
 

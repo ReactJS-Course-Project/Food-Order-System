@@ -23,6 +23,7 @@ const MaterialTableDemo = props => {
                 return { ...prevState, data };
               });
             }, 600);
+            props.add(newData);
           }),
         onRowUpdate: (newData, oldData) =>
           new Promise(resolve => {
@@ -36,7 +37,7 @@ const MaterialTableDemo = props => {
                 });
               }
             }, 600);
-            console.log('Update');
+            props.update(newData);
           }),
         onRowDelete: oldData =>
           new Promise(resolve => {
