@@ -4,6 +4,7 @@ import Textinput from '../../../UI/InputType/InputType';
 import Button from '../../../UI/Button/Button';
 import axios from '../../../Axios/axiosSellerApi';
 import Select from '../../../UI/Select/Select';
+import Authentication from '../Authentication';
 
 class Register extends React.Component {
   state = {
@@ -52,60 +53,64 @@ class Register extends React.Component {
 
   render() {
     return (
-      <div className={classStyle.Register}>
-        <h1 className={classStyle.Heading}>Register Form</h1>
-        <Textinput
-          title='First name'
-          inputId='firstname'
-          type='text'
-          name='firstname'
-          value={this.state.firstname}
-          changed={event => this.changedHandler(event)}
-        />
-        <Textinput
-          title='Last name'
-          inputId='lastname'
-          type='text'
-          name='lastname'
-          value={this.state.lastname}
-          changed={event => this.changedHandler(event)}
-        />
-        <Textinput
-          title='Username'
-          inputId='username'
-          type='text'
-          name='username'
-          value={this.state.username}
-          changed={event => this.changedHandler(event)}
-        />
+      <div>
+        <Authentication>
+          <div className={classStyle.Register}>
+            <h1 className={classStyle.Heading}>Register Form</h1>
+            <Textinput
+              title='First name'
+              inputId='firstname'
+              type='text'
+              name='firstname'
+              value={this.state.firstname}
+              changed={event => this.changedHandler(event)}
+            />
+            <Textinput
+              title='Last name'
+              inputId='lastname'
+              type='text'
+              name='lastname'
+              value={this.state.lastname}
+              changed={event => this.changedHandler(event)}
+            />
+            <Textinput
+              title='Username'
+              inputId='username'
+              type='text'
+              name='username'
+              value={this.state.username}
+              changed={event => this.changedHandler(event)}
+            />
 
-        <Select
-          title='Sex'
-          data={[
-            { id: 'm', item: 'Male' },
-            { id: 'f', item: 'Female' }
-          ]}
-          value={this.state.sex}
-          name='sex'
-          changed={event => this.changedHandler(event)}
-        />
-        <Textinput
-          title='Age'
-          inputId='age'
-          type='number'
-          name='age'
-          value={this.state.age}
-          changed={event => this.changedHandler(event)}
-        />
-        <Textinput
-          title='Password'
-          inputId='password'
-          type='password'
-          name='password'
-          value={this.state.password}
-          changed={event => this.changedHandler(event)}
-        />
-        <Button title='Register' clicked={this.submitHandler} />
+            <Select
+              title='Sex'
+              data={[
+                { id: 'm', item: 'Male' },
+                { id: 'f', item: 'Female' }
+              ]}
+              value={this.state.sex}
+              name='sex'
+              changed={event => this.changedHandler(event)}
+            />
+            <Textinput
+              title='Age'
+              inputId='age'
+              type='number'
+              name='age'
+              value={this.state.age}
+              changed={event => this.changedHandler(event)}
+            />
+            <Textinput
+              title='Password'
+              inputId='password'
+              type='password'
+              name='password'
+              value={this.state.password}
+              changed={event => this.changedHandler(event)}
+            />
+            <Button title='Register' clicked={this.submitHandler} />
+          </div>
+        </Authentication>
       </div>
     );
   }

@@ -49,7 +49,14 @@ namespace web_api.Services
 
         public Food GetFood(int id)
         {
-            throw new System.NotImplementedException();
+            var food = _context.foods.Find(id);
+            if (food == null)
+                throw new AppException("Food not found");
+
+            return _context.foods
+                    .Include(f => f.category)
+                    .Include(f => f.seller)
+                    .Single(f => f.Id == id);
         }
 
         public void updateFood(Food food)
@@ -73,6 +80,16 @@ namespace web_api.Services
         public IEnumerable<Category> GetAllCategories()
         {
             throw new System.NotImplementedException();
+        }
+
+        public IEnumerable<Food> GetFoodsByCategory(int CategoryId)
+        {
+            var category = _context.categories.Find(CategoryId);
+            if (category == null) throw new AppException("Category not found");
+            return _context.foods
+                            .Include(f => f.category)
+                            .Include(f => f.seller)
+                            .Where(f => f.CategoryId == CategoryId);
         }
     }
 }

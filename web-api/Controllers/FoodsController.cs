@@ -64,6 +64,36 @@ namespace web_api.Controllers
                 )
             );
         }
+        [HttpGet("GetFood/{id}")]
+        public IActionResult GetFood(int id)
+        {
+            return Ok(
+                JsonConvert.SerializeObject(
+                    _foodService.GetFood(id),
+                    Formatting.Indented,
+                    new JsonSerializerSettings()
+                    {
+                        ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                    }
+                )
+            );
+        }
+
+        [HttpGet("Category/{id}")]
+        public IActionResult GetFoodByCategory(int id)
+        {
+            return Ok(
+                JsonConvert.SerializeObject(
+                    _foodService.GetFoodsByCategory(id),
+                    Formatting.Indented,
+                    new JsonSerializerSettings()
+                    {
+                        ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                    }
+                )
+            );
+        }
+
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

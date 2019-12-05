@@ -15,6 +15,7 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import Button from '@material-ui/core/Button';
 import axiosSeller from '../../Axios/axiosSellerApi';
 import axiosFood from '../../Axios/axiosFoodApi';
+import DialogUI from '../../UI/DialogUI/DialogUI';
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -113,6 +114,7 @@ export default function PrimarySearchAppBar(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [showMessage, setShowMessage] = React.useState(false);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -148,6 +150,13 @@ export default function PrimarySearchAppBar(props) {
     localStorage.clear();
     window.location = '/';
   };
+  const onMessageClick = () => {
+    console.log('show message');
+    setShowMessage(true);
+  };
+  const onCloseMessage = () => {
+    setShowMessage(false);
+  };
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -175,7 +184,7 @@ export default function PrimarySearchAppBar(props) {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
+      <MenuItem onClick={onMessageClick}>
         <IconButton aria-label='show 4 new mails' color='inherit'>
           <Badge badgeContent={4} color='secondary'>
             <MailIcon />
@@ -226,7 +235,11 @@ export default function PrimarySearchAppBar(props) {
               Foods
             </Button>
             <Button color='inherit'>Orders</Button>
-            <IconButton aria-label='show 4 new mails' color='inherit'>
+            <IconButton
+              aria-label='show 4 new mails'
+              color='inherit'
+              onClick={onMessageClick}
+            >
               <Badge badgeContent={4} color='secondary'>
                 <MailIcon />
               </Badge>
@@ -263,6 +276,7 @@ export default function PrimarySearchAppBar(props) {
       {renderMobileMenu}
       {renderMenu}
       {props.children}
+      {<DialogUI show={showMessage} onCloseDialog={onCloseMessage} />}
     </div>
   );
 }

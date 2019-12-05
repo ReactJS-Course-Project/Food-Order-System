@@ -8,6 +8,7 @@ namespace web_api.Services
         Food Add(Food food);
         IEnumerable<Food> GetOwnFoods(int SellerId);
         Food GetFood(int id);
+        IEnumerable<Food> GetFoodsByCategory(int CategoryId);
         void updateFood(Food food);
         void deleteFood(int id);
         IEnumerable<Category> GetAllCategories();

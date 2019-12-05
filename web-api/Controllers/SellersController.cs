@@ -115,9 +115,16 @@ namespace web_api.Controllers
         [HttpPut("changeInfo/{id}")]
         public IActionResult Update(int id, [FromBody]UpdateInfo sellerDto)
         {
-            _sellerService.Update(id, sellerDto.firstName, sellerDto.lastName, sellerDto.userName,
-            sellerDto.sex, sellerDto.age, sellerDto.password);
-            return Ok();
+            try
+            {
+                _sellerService.Update(id, sellerDto.firstName, sellerDto.lastName, sellerDto.userName,
+                sellerDto.sex, sellerDto.age, sellerDto.password);
+                return Ok();
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
         [HttpPut("changePassword/{id}")]

@@ -119,6 +119,7 @@ namespace web_api.Services
         public void Update(int id, string firstName, string lastName,
                 string userName, string sex, int age, string password)
         {
+
             var seller = _context.sellers.Find(id);
 
             if (seller == null)

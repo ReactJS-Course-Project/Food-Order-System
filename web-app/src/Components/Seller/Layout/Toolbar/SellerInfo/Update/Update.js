@@ -59,7 +59,9 @@ class Update extends React.Component {
         window.location = '/Layout';
       })
       .catch(error => {
-        console.log(error.response.data);
+        this.setState({ message: error.response.data.message });
+        if (this.state.message === '')
+          this.setState({ message: 'Password is required!' });
         this.setState({ error: true });
       });
   };
@@ -130,7 +132,7 @@ class Update extends React.Component {
         <ErrorMsg
           error={this.state.error}
           onClose={this.setCloseError}
-          message='Error'
+          message={this.state.message}
         />
       </div>
     );
