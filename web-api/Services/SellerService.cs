@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using web_api.Data;
 using web_api.Helpers;
 using web_api.Models;
@@ -60,13 +61,25 @@ namespace web_api.Services
             byte[] passwordHash, passwordSalt;
             CreatePasswordHash(password, out passwordHash, out passwordSalt);
 
-            seller.passwordHash = passwordHash;
-            seller.passwordSalt = passwordSalt;
+            Admin existingAdmin = _context.admins
+                                    .SingleOrDefault(a => a.Id == seller.adminId);
 
-            _context.sellers.Add(seller);
+            Seller newSeller = new Seller()
+            {
+                firstName = seller.firstName,
+                lastName = seller.lastName,
+                userName = seller.userName,
+                passwordHash = passwordHash,
+                passwordSalt = passwordSalt,
+                sex = seller.sex,
+                age = seller.age,
+                admin = existingAdmin
+            };
+
+            _context.sellers.Add(newSeller);
             _context.SaveChanges();
 
-            return seller;
+            return newSeller;
         }
 
         private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
@@ -103,39 +116,71 @@ namespace web_api.Services
             return _context.sellers.Find(id);
         }
 
-        public void Update(Seller sellerParam, string password = null)
+        public void Update(int id, string firstName, string lastName,
+                string userName, string sex, int age, string password)
         {
-            var seller = _context.sellers.Find(sellerParam.Id);
+
+            var seller = _context.sellers.Find(id);
 
             if (seller == null)
                 throw new AppException("User not found");
 
-            if (sellerParam.userName != seller.userName)
+            if (userName != seller.userName)
             {
                 // username has changed so check if the new username is already taken
-                if (_context.sellers.Any(x => x.userName == sellerParam.userName))
-                    throw new AppException("Username " + sellerParam.userName + " is already taken");
+                if (_context.sellers.Any(x => x.userName == userName))
+                    throw new AppException("Username " + userName + " is already taken");
             }
 
+            if (string.IsNullOrWhiteSpace(password))
+                throw new AppException("Password is incorrect");
+            // check if password is correct
+            else if (!VerifyPasswordHash(password, seller.passwordHash, seller.passwordSalt))
+                throw new AppException("Password is incorrect");
             // update seller properties
-            seller.firstName = sellerParam.firstName;
-            seller.lastName = sellerParam.lastName;
-            seller.userName = sellerParam.userName;
-            seller.sex = sellerParam.sex;
-            seller.age = sellerParam.age;
-
-            // update password if it was entered
-            if (!string.IsNullOrWhiteSpace(password))
-            {
-                byte[] passwordHash, passwordSalt;
-                CreatePasswordHash(password, out passwordHash, out passwordSalt);
-
-                seller.passwordHash = passwordHash;
-                seller.passwordSalt = passwordSalt;
-            }
+            seller.firstName = firstName;
+            seller.lastName = lastName;
+            seller.userName = userName;
+            seller.sex = sex;
+            seller.age = age;
 
             _context.sellers.Update(seller);
             _context.SaveChanges();
+        }
+
+        public string GetAdminUsername(int SellerId)
+        {
+            // get current seller
+            Seller currentSeller = _context.sellers
+                                    .Include(a => a.admin)
+                                    .SingleOrDefault(s => s.Id == SellerId);
+            return currentSeller.admin.userName;
+        }
+
+        public void UpdatePassword(int id, string oldPassword, string newPassword)
+        {
+            var seller = _context.sellers.Find(id);
+
+            if (seller == null)
+                throw new AppException("User not found");
+
+            if (string.IsNullOrWhiteSpace(oldPassword))
+                throw new AppException("Password is incorrect");
+            // check if password is correct
+            else if (!VerifyPasswordHash(oldPassword, seller.passwordHash, seller.passwordSalt))
+                throw new AppException("Password is incorrect");
+            // update password if it was entered
+            if (!string.IsNullOrWhiteSpace(newPassword))
+            {
+                byte[] passwordHash, passwordSalt;
+                CreatePasswordHash(newPassword, out passwordHash, out passwordSalt);
+
+                seller.passwordHash = passwordHash;
+                seller.passwordSalt = passwordSalt;
+
+                _context.sellers.Update(seller);
+                _context.SaveChanges();
+            }
         }
     }
 }

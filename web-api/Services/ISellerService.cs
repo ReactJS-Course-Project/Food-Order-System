@@ -9,7 +9,10 @@ namespace web_api.Services
         IEnumerable<Seller> GetAll();
         Seller GetById(int id);
         Seller Create(Seller seller, string password);
-        void Update(Seller seller, string password = null);
+        void Update(int id, string firstName, string lastName,
+                string userName, string sex, int age, string password);
+        void UpdatePassword(int id, string oldPassword, string newPassword);
         void Delete(int id);
+        string GetAdminUsername(int SellerId);
     }
 }

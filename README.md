@@ -10,5 +10,3 @@
 ## ClassDiagram
 
 ![ClassDiagram](https://github.com/ReactJS-Course-Project/Food-Order-System/blob/master/FoodOrder.png)
-
-## Seller Part

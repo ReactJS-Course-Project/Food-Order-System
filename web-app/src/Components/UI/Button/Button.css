@@ -9,22 +9,9 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  background-color: crimson;
   text-decoration: none;
   color: cornsilk;
   padding: 1rem;
-  border-radius: 0.5rem;
-  transition: all 0.2s ease-out;
   cursor: pointer;
   user-select: none;
-}
-
-.btnForm:hover {
-  transform: translate(-50%, -2px);
-  box-shadow: 2px 2px 7px #ccc;
-}
-
-.btnForm:active {
-  box-shadow: none;
-  transform: translate(-50%, 0);
 }

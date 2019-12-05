@@ -22,7 +22,10 @@ const PopoverMenu = React.forwardRef(function PopoverMenu(props, ref) {
               >
                 {props.items.map(itemlist => {
                   return (
-                    <MenuItem key={itemlist.id} onClick={props.func}>
+                    <MenuItem
+                      key={itemlist.id}
+                      onClick={props.func.bind(this, itemlist.id)}
+                    >
                       {itemlist.itemName}
                     </MenuItem>
                   );
