@@ -5338,30 +5338,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Kimly\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/Users/chetha/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Website\\Food-Order-System\\web-api\\web-api.csproj",
+      "projectUniqueName": "/Users/chetha/Documents/Document/IT-STEP-Course-Project/Food-Order-System/web-api/web-api.csproj",
       "projectName": "web-api",
-      "projectPath": "D:\\Website\\Food-Order-System\\web-api\\web-api.csproj",
-      "packagesPath": "C:\\Users\\Kimly\\.nuget\\packages\\",
-      "outputPath": "D:\\Website\\Food-Order-System\\web-api\\obj\\",
+      "projectPath": "/Users/chetha/Documents/Document/IT-STEP-Course-Project/Food-Order-System/web-api/web-api.csproj",
+      "packagesPath": "/Users/chetha/.nuget/packages/",
+      "outputPath": "/Users/chetha/Documents/Document/IT-STEP-Course-Project/Food-Order-System/web-api/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Kimly\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/chetha/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -5419,7 +5413,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
       }
     }
   }
