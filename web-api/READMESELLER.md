@@ -19,19 +19,19 @@
 
 # -------------------------
 
-# 1. Authenticate (Controller/authenticate) (Login)
+- 1. Authenticate (Controller/authenticate) (Login)
 
-# 2. Register (Controller/register)
+- 2. Register (Controller/register)
 
-# 3. GetAll (Controller/GetAll)
+- 3. GetAll (Controller/GetAll)
 
-# 4. GetById (Controller/{id}) eg. Sellers/1
+- 4. GetById (Controller/{id}) eg. Sellers/1
 
-# 5. Update (Controller/changeInfo/{id})
+- 5. Update (Controller/changeInfo/{id})
 
-# 6. change password (Controller/changePassword/{id})
+- 6. change password (Controller/changePassword/{id})
 
-# 7. get info of admin (Controller/AdminInfo/{SellerId})
+- 7. get info of admin (Controller/AdminInfo/{SellerId})
 
 # ------------------------
 
@@ -39,12 +39,12 @@
 
 # -------------------------
 
-# 1. add food (Controller/import)
+- 1. add food (Controller/import)
 
-# 2. view food by seller (Controller/{SellerId})
+- 2. view food by seller (Controller/{SellerId})
 
-# 3. get food by its id (Controller/GetFood/{id})
+- 3. get food by its id (Controller/GetFood/{id})
 
-# 4. get food by category id (Controller/Category/{id})
+- 4. get food by category id (Controller/Category/{id})
 
-# 5. delete food (Controller/{id})
+- 5. delete food (Controller/{id})
